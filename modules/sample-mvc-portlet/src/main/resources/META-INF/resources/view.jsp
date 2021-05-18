@@ -1,6 +1,14 @@
 <%@ page import="com.liferay.portal.kernel.portlet.LiferayWindowState" %>
+<%@ page import="com.liferay.portal.kernel.log.LogFactoryUtil" %>
+<%@ page import="com.liferay.portal.kernel.util.ParamUtil" %>
 <%@ page contentType="text/html; UTF-8" language="java" %>
 <%@ include file="init.jsp"%>
+
+<%
+    com.liferay.portal.kernel.log.Log LOG = LogFactoryUtil.getLog("ru.sample.jsp.view");
+    String greet = ParamUtil.getString(request, "greet");
+    LOG.info("greet from request:" + greet);
+%>
 
 <h1>Hello, <%=themeDisplay.getUser().getFullName()%>! </h1>
 
