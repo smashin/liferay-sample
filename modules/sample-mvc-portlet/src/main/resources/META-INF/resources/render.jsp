@@ -1,12 +1,14 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="com.liferay.portal.kernel.util.ParamUtil" %>
+<%@ page import="com.liferay.portal.kernel.util.Validator" %>
+<%@ include file="init.jsp"%>
+<%@page contentType="text/html; UTF-8" language="java" %>
 
-<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
+<%
+    String redirect = ParamUtil.getString(request, "redirect");
+    if (Validator.isNotNull(redirect)) {
+        portletDisplay.setShowBackIcon(true);
+        portletDisplay.setURLBack(redirect);
+    }
+%>
 
-<%@ taglib uri="http://liferay.com/tld/aui" prefix="aui" %><%@
-taglib uri="http://liferay.com/tld/portlet" prefix="liferay-portlet" %><%@
-taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %><%@
-taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
-
-<liferay-theme:defineObjects />
-
-<portlet:defineObjects />
+<h2><liferay-ui:message key="host-x" arguments="${host}"></liferay-ui:message></h2>
